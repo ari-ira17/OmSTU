@@ -3,83 +3,102 @@ using System.ComponentModel.DataAnnotations;
 using System.Net.NetworkInformation;
 using System.Reflection.Emit;
 
-class Practise_2{
+class Laboratory_5{
     static void Main()
     {
         Console.WriteLine("Введите длину массива");
         int num_of_numbers = Convert.ToInt32(Console.ReadLine());
         
-        // Массив и заполнение
+        // Массив и заполнение еще 3ех
         int[] numbers = new int[num_of_numbers];
+        int[] new_numbers = new int[num_of_numbers];
+
+        List<int> positive = new List<int>();
+        List<int> nulll = new List<int>();
+        List<int> negative = new List<int>();
+
+        // Пользователь ввел циферки, сделали 3 массива: положительные, нулевые и отрицательные
         for (int i = 0; i < num_of_numbers; i++)
         {
             Console.WriteLine("Введите элемент массива");
-            numbers[i] = Convert.ToInt32(Console.ReadLine());
+            int element = Convert.ToInt32(Console.ReadLine());
+
+            numbers[i] = element;
+
+            if (element > 0) {positive.Add(element);}
+            else if (element == 0) {nulll.Add(element);}
+            else {negative.Add(element);}
         }
 
-        int[] new_numbers = new int[num_of_numbers];
-        // Вывод положительных
-        int k_need = 0;
-        for (int k = 0; k < numbers.Length; k++)
+        int counter = 0;
+        for (int j = 0; j < positive.Count(); j++)
         {
-            if (numbers[k] > 0)
-            {
-                new_numbers[k] = numbers[k];
-                k_need = Math.Max(k, k_need);
-            }
+            new_numbers[j] = positive[j];
+            counter = j;
         }
-        k_need ++; //последний положительный индекс
 
-        // Вывод нулевых
-        int l_need = 0;
-        for (int l = 0; l < numbers.Length; l++)
+        if (counter == 0)
         {
-            if (numbers[l] == 0)
+            for (int k = 0; k < nulll.Count(); k++)
             {
-                new_numbers[k_need] = numbers[l];
-                k_need ++;
-                l_need = Math.Max(l, l_need);
+                new_numbers[counter] = nulll[k];
+                counter++;
             }
         }
-        l_need ++;  //последний нулевой индекс
+        else
+        {
+            for (int k = 0; k < nulll.Count(); k++)
+            {
+               counter++;
+                new_numbers[counter] = nulll[k]; 
+            }
+        }
 
-        // Вывод отрицательных
-        for (int m = 0; m < numbers.Length; m++)
+        if (counter == 0)
         {
-            if (numbers[m] < 0)
+            for (int r = 0; r < negative.Count(); r++)
             {
-                new_numbers[l_need] = numbers[m];
-                l_need ++;
+                new_numbers[counter] = negative[r];
+                counter++;
             }
         }
+        else
+        {
+            for (int r = 0; r < negative.Count(); r++)
+            {
+                counter++;
+                new_numbers[counter] = negative[r];
+            }
+        }
+
 
         // 1-e задание
         foreach (int i in new_numbers)
             Console.Write(i + " ");
 
         // 2-ое задание
-        int p = 0;
-        int t = Math.Abs(numbers[0] - numbers[1]);
-        for (int j = 1; j < numbers.Length; j++)
+        int counter_1 = 0;
+        int difference = Math.Abs(numbers[0] - numbers[1]);
+        for (int j = 1; j < num_of_numbers; j++)
         {
-            if ((numbers[j - 1] <= numbers[j]) && (numbers[j - 1] - numbers[j] == t))
+            if ((numbers[j - 1] - numbers[j] == difference) && numbers[j - 1] != numbers[j])
             {
-                p ++;
+                counter_1++;
             }
         }
-        if (p == 0) {Console.WriteLine("\nПоследовательность убывающих элементов");}
-        else {Console.WriteLine("Не является последовательностью убывающих элементов");}
+        if (counter_1 == num_of_numbers - 1) {Console.WriteLine("\nРавномерная последовательность убывающих элементов");}
+        else {Console.WriteLine("\nНе является равномерной последовательностью убывающих элементов");}
 
         // 3-е задание
-        int w = 0;
-        for (int q = 0; q < num_of_numbers; q++)
+        int counter_2 = 0;
+        for (int k = 0; k < num_of_numbers; k++)
         {
-            if (Math.Abs(numbers[q]) % 2 != 0)
+            if (Math.Abs(numbers[k]) % 2 != 0)
             {
-                w++;
+                counter_2++;
             }
         }
-        if (w == 0) {Console.WriteLine("Все числа четные");}
+        if (counter_2 == 0) {Console.WriteLine("Все числа четные");}
         else {Console.WriteLine("Не все элементы четные");}
     
     }
