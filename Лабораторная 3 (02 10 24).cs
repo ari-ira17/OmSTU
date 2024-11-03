@@ -34,74 +34,87 @@
 
 
 //                          №2
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection.Emit;
-class Program_2 {
-    static void Main() 
-    {
-        Console.WriteLine("Введите число элементов");
-        int n = Convert.ToInt32(Console.ReadLine());
-
-        int min_counter = 100_000_000;
-        int counter = 0;
-
-        Console.WriteLine("Введите числа");
-
-        for (int i = 0; i < n; i++)
-        {
-            int current = Convert.ToInt32(Console.ReadLine());
-
-            if (current % 2 == 0)
-            {
-                counter++;
-            }
-            else if (counter != 0)
-            {
-                min_counter = Math.Min(min_counter, counter);
-            }
-            else
-            {
-                counter = 0;
-            }
-
-            if (counter != 0)
-            {
-                min_counter = Math.Min(min_counter, counter);
-            }
-        }
-        Console.WriteLine(min_counter);
-  }
-}
-
-
-
-//                          №3
 // using System;
 // using System.ComponentModel.DataAnnotations;
 // using System.Reflection.Emit;
-// class Program_3 {
+// class Program_2 {
 //     static void Main() 
 //     {
 //         Console.WriteLine("Введите число элементов");
 //         int n = Convert.ToInt32(Console.ReadLine());
-//         int sum_inside = 0;
-//         int sum_outside = 0;
-//         for (int i=0; i<n; i++)
+
+//         int min_counter = 100_000_000;
+//         int counter = 0;
+
+//         Console.WriteLine("Введите числа");
+
+//         for (int i = 0; i < n; i++)
 //         {
-//             int a = Convert.ToInt32(Console.ReadLine());
-//             if (a % 2 == 0)
+//             int current = Convert.ToInt32(Console.ReadLine());
+
+//             if (current % 2 == 0)
 //             {
-//                 sum_inside += a;
-//             }   
+//                 counter++;
+//             }
+//             else if (counter != 0)
+//             {
+//                 min_counter = Math.Min(min_counter, counter);
+//             }
 //             else
 //             {
-//                 sum_inside = 0;
+//                 counter = 0;
 //             }
 
-//             sum_outside = Math.Max(sum_inside, sum_outside);
-                
+//             if (counter != 0)
+//             {
+//                 min_counter = Math.Min(min_counter, counter);
+//             }
 //         }
-//         Console.WriteLine(sum_outside);
+//         Console.WriteLine(min_counter);
 //   }
 // }
+
+
+
+//                          №3
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection.Emit;
+
+class Program_3
+{
+    static void Main()
+    {
+        Console.Write("Введите количество элементов: ");
+        int n = Convert.ToInt32(Console.ReadLine());
+
+        int maxSum = 0;
+        int currentSum = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write("Введите число: ");
+            int number = Convert.ToInt32(Console.ReadLine());
+
+            if (number % 2 == 0)
+            {
+                currentSum += number; 
+            }
+            else
+            {
+                if (currentSum > maxSum)
+                {
+                    maxSum = currentSum;
+                }
+                currentSum = 0;
+            }
+        }
+
+        if (currentSum > maxSum)
+        {
+            maxSum = currentSum;
+        }
+
+        Console.WriteLine($"Максимальная сумма подпоследовательности четных элементов: {maxSum}");
+    }
+}
