@@ -81,6 +81,8 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection.Emit;
 
+using System;
+
 class Program_3
 {
     static void Main()
@@ -88,29 +90,42 @@ class Program_3
         Console.Write("Введите количество элементов: ");
         int n = Convert.ToInt32(Console.ReadLine());
 
-        int maxSum = 0;
+        int maxSum = int.MinValue;
         int currentSum = 0;
+        bool inSubsequence = false; 
 
         for (int i = 0; i < n; i++)
         {
             Console.Write("Введите число: ");
             int number = Convert.ToInt32(Console.ReadLine());
 
-            if (number % 2 == 0)
+            if (number % 2 == 0) 
             {
-                currentSum += number; 
-            }
-            else
-            {
-                if (currentSum > maxSum)
+                if (!inSubsequence) 
                 {
-                    maxSum = currentSum;
+                    inSubsequence = true;
+                    currentSum = number; 
                 }
-                currentSum = 0;
+                else
+                {
+                    currentSum += number; 
+                }
+            }
+            else 
+            {
+                if (inSubsequence) 
+                {
+                    if (currentSum > maxSum)
+                    {
+                        maxSum = currentSum;
+                    }
+                    currentSum = 0; 
+                    inSubsequence = false; 
+                }
             }
         }
 
-        if (currentSum > maxSum)
+        if (inSubsequence && currentSum > maxSum)
         {
             maxSum = currentSum;
         }
