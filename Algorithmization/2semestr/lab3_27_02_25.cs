@@ -39,8 +39,6 @@ class Laboratory_3
                     flag = false;
                     break;
                 }
-                    
-
             }
         }  
 
