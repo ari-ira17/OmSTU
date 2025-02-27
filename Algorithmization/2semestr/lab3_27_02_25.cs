@@ -53,7 +53,7 @@ class Laboratory_3
         }
         else
         {
-            Console.WriteLine("Неравильная последовательность");
+            Console.WriteLine("Неправильная последовательность");
         }        
     }
 }
