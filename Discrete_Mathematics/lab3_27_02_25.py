@@ -68,32 +68,28 @@ def counting_components(mat):
     return len(set(components))
 
 
-matrix_weight = [[0, 5, 0, 0, 11, 0, 8],
-                 [5, 0, 9, 0, 0, 0, 4],
-                 [0, 9, 0, 0, 0, 15, 8],
-                 [0, 0, 0, 0, 20, 0, 0],
-                 [11, 0, 0, 20, 0, 19, 3],
-                 [0, 0, 15, 0, 19, 0, 5],
-                 [8, 4, 8, 0, 3, 5, 0]]
+matrix = [[0, 5, 0, 0, 11, 0, 8],       # матрица весов для подсчета остовного дерева
+          [5, 0, 9, 0, 0, 0, 4],
+          [0, 9, 0, 0, 0, 15, 8],
+          [0, 0, 0, 0, 20, 0, 0],
+          [11, 0, 0, 20, 0, 19, 3],
+          [0, 0, 15, 0, 19, 0, 5],
+          [8, 4, 8, 0, 3, 5, 0]]
 
-edges_trees = searching_edges(matrix_weight)       #нашли ребра остновного дерева
+edges_trees = searching_edges(matrix)       # нашли ребра остновного дерева
 
-
-matrix_connection = [[0, 1, 0, 0, 1, 0, 1],
-                     [1, 0, 1, 0, 0, 0, 1],
-                     [0, 1, 0, 0, 0, 1, 1],
-                     [0, 0, 0, 0, 1, 0, 0],
-                     [1, 0, 0, 1, 0, 1, 1],
-                     [0, 0, 1, 0, 1, 0, 1],
-                     [1, 1, 1, 0, 1, 1, 0]]
+for i in range(len(matrix[0])):
+    for j in range(len(matrix[0])):
+        if matrix[i][j] != 0:
+            matrix[i][j] = 1        # матрица смежности для подсчета компонент связности
 
 bridges = 0
 
 for i in range(len(edges_trees)):
-    matrix_connection_copy = [row[:] for row in matrix_connection]
-    matrix_connection_copy[edges_trees[i][0]][edges_trees[i][1]] = 0
-    matrix_connection_copy[edges_trees[i][1]][edges_trees[i][0]] = 0
-    components_now = counting_components(matrix_connection_copy)
+    matrix_copy = [row[:] for row in matrix]
+    matrix_copy[edges_trees[i][0]][edges_trees[i][1]] = 0
+    matrix_copy[edges_trees[i][1]][edges_trees[i][0]] = 0
+    components_now = counting_components(matrix_copy)
     if components_now != 1:
         bridges += 1
 
