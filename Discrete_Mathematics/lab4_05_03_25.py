@@ -42,4 +42,3 @@ while point_now != start:
 previous_points = [el + 1 for el in previous_points]
 
 print("Маршрут проходит через вершины:", *previous_points)
-
