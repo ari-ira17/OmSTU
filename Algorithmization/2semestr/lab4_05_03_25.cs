@@ -44,7 +44,6 @@ class Laboratory_4
                 {
                     if (a != 0) { stack.Push(b / a); }
                     else { flag = false; }
-                    
                 }
 
                 else if (el == "-")
