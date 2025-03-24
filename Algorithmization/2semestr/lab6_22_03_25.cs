@@ -47,7 +47,6 @@ class Laboratory_6
 
         Event evnt = new Event();
         evnt.Border_Crossed += () => Border_Controller.Checking(point.X, point.Y, x1, x2, y1, y2, ref flag);
-    
         
         while (flag)
         {
