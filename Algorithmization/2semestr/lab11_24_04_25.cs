@@ -14,7 +14,7 @@ class Laboratory_11
         
         foreach (string line in lines)
         {
-            char[] line_elements = line.ToCharArray(); // 'a' 'b' '1' '2' '3'
+            char[] line_elements = line.ToCharArray(); 
             bool even_exist = false;
 
             for (int i = 0; i < line_elements.Length; i++)
