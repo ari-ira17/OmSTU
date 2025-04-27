@@ -1,7 +1,5 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.IO;
-
 
 class Cities
 {
@@ -22,8 +20,7 @@ class Cities
             for (int j = 0; j < n; j++)
             {
                 if (i == j) { matrix[i][j] = 0; }
-                else { matrix[i][j] = Int32.MaxValue / 2; }
-                
+                else { matrix[i][j] = Int32.MaxValue / 2; }  
             }
         }
 
