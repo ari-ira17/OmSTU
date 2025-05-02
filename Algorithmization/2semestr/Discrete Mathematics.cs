@@ -48,6 +48,7 @@ class Dicrete_Mathematics
                 { maximum = matrix[i][j]; }
             }
         }
+        
         int infinity = maximum * 1000;
         for (int i = 0; i < n; i++)
         {
