@@ -73,7 +73,7 @@ class Dicrete_Mathematics
         if (cost == 0)
         { ans = "-1"; }
         else
-        { ans = Convert.ToString(cost);}
+        { ans = Convert.ToString(cost); }
 
         File.WriteAllText(@"D:\универ\алгоритмизация\2 семестр\РГР 2 семестр\answer.txt", ans);
     }
