@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Security.AccessControl;
 
 class Distance_Between_Cities
@@ -15,11 +15,12 @@ class Distance_Between_Cities
         int y1 = Convert.ToInt32(line_1[1]);  
 
         string[] line_2 = lines[1].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-        int x2 = Convert.ToInt32(line_2[0]); 
+        int x2 = Convert.ToInt32(line_2[0]);  
         int y2 = Convert.ToInt32(line_2[1]);  
 
         string[] line_3 = lines[2].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
         int r = Convert.ToInt32(line_3[0]);  
+        
 
         double fi_1 = x1 / 180.0 * Math.PI;
         double lambda_1 = y1 / 180.0 * Math.PI;
@@ -31,8 +32,9 @@ class Distance_Between_Cities
         acosArgument = Math.Max(-1.0, Math.Min(1.0, acosArgument)); 
         double angle = Math.Acos(acosArgument);
 
-        
         double distance = r * angle;
-        Console.WriteLine(Math.Round(distance, 3));
+        
+        string ans = Convert.ToString(Math.Round(distance, 3));
+        File.WriteAllText(@"D:\универ\алгоритмизация\2 семестр\РГР 2 семестр\Расстояние между городами\answer_02.txt", ans);
     }
 }
