@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics.Contracts;
 
 class Laptop_1
@@ -39,7 +39,7 @@ class Students
         Has_A_Laptop = h_a_l;
         OS = os;
         Producer_Id = pr_id;
-    }   // есть ноут
+    }   
     public Students(int s_id, int cl, string name, bool h_a_l)
     {
         Student_ID = s_id;
@@ -48,7 +48,7 @@ class Students
         Has_A_Laptop = h_a_l;
         OS = "";
         Producer_Id = 0;
-    }   // нет ноута
+    }   
 }
 
 
